@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Options - DeepL Translator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      padding: 32px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #0f2b46;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: monospace;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0f2b46;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .toggle-visibility {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #666;
+    }
+
+    .help-text {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .help-text a {
+      color: #0f2b46;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px 24px;
+      background: #0f2b46;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      background: #1a3d5c;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+    }
+
+    .status.success {
+      display: block;
+      background: #efe;
+      color: #060;
+    }
+
+    .status.error {
+      display: block;
+      background: #fee;
+      color: #c00;
+    }
+
+    .info-box {
+      background: #f0f7ff;
+      border: 1px solid #cce0ff;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .info-box strong {
+      color: #0f2b46;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚙️ Configuration</h1>
+    <p class="subtitle">Configurez votre clé API DeepL pour utiliser l'extension</p>
+
+    <div class="info-box">
+      <strong>Comment obtenir une clé API gratuite ?</strong><br><br>
+      1. Créez un compte sur <a href="https://www.deepl.com/pro-api" target="_blank">deepl.com/pro-api</a><br>
+      2. Choisissez le plan "DeepL API Free"<br>
+      3. Copiez votre clé API depuis votre tableau de bord<br><br>
+      <strong>Limite gratuite :</strong> 500 000 caractères / mois
+    </div>
+
+    <form id="options-form">
+      <div class="field">
+        <label for="api-key">Clé API DeepL</label>
+        <div class="input-wrapper">
+          <input 
+            type="password" 
+            id="api-key" 
+            placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:fx"
+            autocomplete="off"
+          >
+          <button type="button" class="toggle-visibility" id="toggle-btn">👁️</button>
+        </div>
+        <p class="help-text">
+          Les clés gratuites se terminent par <code>:fx</code>
+        </p>
+      </div>
+
+      <button type="submit">Sauvegarder</button>
+    </form>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

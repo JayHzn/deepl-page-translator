@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepL Translator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: #0f2b46;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #0f2b46;
+    }
+
+    .cache-indicator {
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .cache-indicator.has-cache {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .cache-indicator.no-cache {
+      background: #fff3e0;
+      color: #ef6c00;
+    }
+
+    .cache-date {
+      opacity: 0.8;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px 16px;
+      background: #0f2b46;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #1a3d5c;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .status {
+      margin-top: 12px;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+      display: none;
+    }
+
+    .status.error {
+      display: block;
+      background: #fee;
+      color: #c00;
+    }
+
+    .status.success {
+      display: block;
+      background: #efe;
+      color: #060;
+    }
+
+    .status.loading {
+      display: block;
+      background: #eef;
+      color: #006;
+    }
+
+    .settings-link {
+      display: block;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: #666;
+      text-decoration: none;
+    }
+
+    .settings-link:hover {
+      color: #0f2b46;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <span>🌐</span>
+    DeepL Translator
+  </h1>
+
+  <div class="field">
+    <label for="source-lang">Langue source</label>
+    <select id="source-lang">
+      <option value="JA">Japonais</option>
+      <option value="ZH">Chinois (simplifié)</option>
+      <option value="EN">Anglais</option>
+      <option value="DE">Allemand</option>
+      <option value="ES">Espagnol</option>
+      <option value="KO">Coréen</option>
+      <option value="IT">Italien</option>
+      <option value="PT">Portugais</option>
+      <option value="RU">Russe</option>
+      <option value="NL">Néerlandais</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="target-lang">Langue cible</label>
+    <select id="target-lang">
+      <option value="FR">Français</option>
+      <option value="EN-GB">Anglais (UK)</option>
+      <option value="EN-US">Anglais (US)</option>
+      <option value="DE">Allemand</option>
+      <option value="ES">Espagnol</option>
+      <option value="IT">Italien</option>
+      <option value="PT-PT">Portugais</option>
+      <option value="JA">Japonais</option>
+      <option value="ZH-HANS">Chinois (simplifié)</option>
+    </select>
+  </div>
+
+  <div id="cache-indicator" class="cache-indicator"></div>
+
+  <button id="translate-btn">Traduire la page</button>
+
+  <div id="status" class="status"></div>
+
+  <a href="options.html" target="_blank" class="settings-link">⚙️ Configurer la clé API</a>
+
+  <script src="popup.js"></script>
+</body>
+</html>

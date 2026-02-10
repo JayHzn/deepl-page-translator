@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "DeepL Translator - Custom",
+  "version": "1.1.0",
+  "description": "Traduisez des pages web avec DeepL en choisissant la langue source et cible. Cache intelligent pour économiser votre quota.",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "https://api-free.deepl.com/*",
+    "https://api.deepl.com/*",
+    "<all_urls>"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png"
+    }
+  },
+  
+  "options_page": "options.html",
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "icons": {
+    "48": "icons/icon48.png"
+  }
+}
